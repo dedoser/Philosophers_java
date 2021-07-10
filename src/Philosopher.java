@@ -64,7 +64,7 @@ public class Philosopher extends Thread {
     private void eat() throws InterruptedException {
         eatMoments++;
         lastTimeMeal = System.currentTimeMillis();
-        printf("%dms %s is eating\n", getTime(), getName());
+        printf("%dms %s is eating\n", getTime(), getName(), eatMoments);
         Thread.sleep(eatTime);
     }
 

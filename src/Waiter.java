@@ -24,9 +24,9 @@ public class Waiter extends Thread {
         while (true) {
             int i = 0;
             for (Philosopher philosopher : list) {
-                if (philosopher.isInterrupted())
+                if (philosopher.isInterrupted() || !philosopher.isAlive())
                     ++i;
-                if (!philosopher.isInterrupted() && getDiffTime(philosopher) >= Philosopher.getDeathTime()) {
+                if ((!philosopher.isInterrupted() && philosopher.isAlive()) && getDiffTime(philosopher) >= Philosopher.getDeathTime()) {
                     list.forEach(Thread::interrupt);
                     System.out.printf("%dms %s died\n", getTimeOfPhiloDeath(philosopher),
                                                         philosopher.getName());
